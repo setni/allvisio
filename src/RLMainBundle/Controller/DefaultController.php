@@ -164,11 +164,8 @@ class DefaultController extends Controller
         *}
         */
         
-        $qb = $em
-            ->getRepository('RLMainBundle:Connection')
-            ->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->getQuery();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQuery('SELECT COUNT(b.id) FROM RLMainBundle:Connection b');
         return $qb->getSingleScalarResult();
        
     }
