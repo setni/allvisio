@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    
+ 
+    
+    <meta name="viewport" content="width=device-width, initial-scale={{ metaResponsive }}">
+    <meta property="og:url"                content="http://allvisio.com" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Le robot-juriste, pour vous servir" />
+    <meta property="og:description"        content="Application d'aide pour les locataires en prise avec leur propriétaire" />
+    <meta property="og:image"              content="https://scontent-cdg2-1.xx.fbcdn.net/t31.0-8/13730901_1043580532357431_3765529016970801822_o.png" />
+    <title>allVIsio</title>
+    <link rel="icon" href="Images/Icons/favicon.ico" />
+    <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}" />
+    <link href='https://fonts.googleapis.com/css?family=Catamaran:600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    
+    <script>compteur = {{ compteur }}</script>
+    {# assetic #}
+    {% javascripts 
+       'assets/js/jquery.js'
+       'assets/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+ 
+</head>
+
+<body>
+    
+    <!-- Header -->
+    
+    <header>
+        <img class="logo" alt="logo" src="{{ asset('assets/Images/Icons/Logo.png') }}">
+        <ul>
+            <li onclick="accueil()" >ACCUEIL</li>
+            <li onclick="sond()" >VOTRE AVIS</li>
+            <li onclick="lettre_aff()">ENVOYER UNE LETTRE</li>
+             <li style="color:#3b5998;" onclick="javascript:window.open('https://www.facebook.com/allvisio')">FACEBOOK</li>
+        </ul>
+        <img onclick="l_menu()" class="l_menu" alt="menu" src="{{ asset('assets/Images/Icons/Menu.png') }}">
+        
+    </header> 
+    
+    <!-- Header Responsive -->
+    
+    <div onclick="effet_menu()" class="effet_menu"></div>
+    <div class="header_responsive">
+        <span onclick="close_menu()" class="close_menu">x</span>
+        <ul>
+            <li onclick="accueil()" >ACCUEIL</li>
+            <li onclick="sond()" >VOTRE AVIS</li>
+            <li onclick="lettre_aff()" style="line-height:1;">ENVOYER UNE LETTRE</li>
+            <li style="color:#3b5998;" onclick="javascript:window.open('https://www.facebook.com/allvisio')">FACEBOOK</li>
+        </ul>
+        <p>© Copyright 2016 - allVisio</p>
+    </div>
+        {% block body %}
+    {% endblock %}
+   
+
+<footer><div class="text">La réponse finale est indicative, elle ne remplace pas totalement les conseils d'un professionnel. Elle est issue de la lecture des différents documents issus des liens. Si vous constatez une erreur, n'hésitez pas à me contacter.<br>Cherchez toujours la résolution d'un litige à l'amiable. Cet outil n'utilise pas de cookies. <br><a href="javascript:amelio()">CONTACT</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:apropos()">A PROPOS</a></div></footer>
+    
+
+
+
+
+
+  </body>
+</html>

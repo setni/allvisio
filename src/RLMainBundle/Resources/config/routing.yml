@@ -1,0 +1,44 @@
+#INDEX
+rl_main_home:
+    path:      /
+    defaults:
+        _controller: RLMainBundle:Default:index
+
+#AJAX
+rl_main_contact:
+    path: /contact
+    defaults:
+        _controller: RLMainBundle:Default:contact
+    requirements:
+        _method: POST
+        
+rl_main_recommande:
+    path: /recommande
+    defaults:
+        _controller: RLMainBundle:Default:recommande
+    requirements:
+        _method: POST
+        
+rl_main_sondage:
+    path: /sondage
+    defaults:
+        _controller: RLMainBundle:Default:sondage
+    requirements:
+        _method: POST
+        
+#LOAD
+
+rl_main_lettre:
+    path: /lettre
+    defaults:
+        _controller: RLMainBundle:Default:lettre
+    requirements:
+        _method: POST
+        
+rl_main_procedure:
+    path: /procedure
+    defaults:
+        _controller: RLMainBundle:Default:procedure
+    requirements:
+        _method: POST
+        

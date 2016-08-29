@@ -1,0 +1,166 @@
+{% verbatim %}
+ <script id="file-upload-template" type="text/x-handlebars-template">
+  <li class="removable_row">
+      <div class="file-field">
+        <input class="file required" id="{{field_id}}" name="{{field_name}}" type="file" />
+      </div>
+      {{#if allowRemove}}
+      <i alt="Remove" title="Remove" class="fa fa-trash remove-row-link"> SUPPRIMER<i/>
+      {{/if}}
+  </li>
+</script>
+{% endverbatim %}
+<style>.mfu-file-list {
+  list-style: none;
+  width: 500px;
+    padding:0;
+  
+  .file-field,
+  .remove-row-link,
+  input[type="file"] {
+    display: inline-block;
+  }
+  
+  .remove-row-link {
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+  }
+  
+  abbr[title="required"] {
+    color: #ff0000;
+  }
+}
+    .mfu-add-new {
+    
+     border:none;
+    border-radius:2px;
+    border: 1px solid black;
+    cursor:pointer;
+    transition:all .4s;
+    width:180px;
+    height:25px;
+    background:white;
+    /*background:#ED9F6E;*/
+    color:BLACK;
+    font-size:16px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .mfu-add-new:hover {
+        background:black;
+        color:#fff;
+    }
+    
+</style>
+
+<span>J'ai besoin des détails de votre problème pour envoyer la mise en demeure.</span>
+<div id="contact-area">
+  		<form enctype="multipart/form-data" method="POST" action="javascript:recommande();">
+				<label for="Name">Votre<font color="#FFFFFF">.</font>nom et prénom:</label>
+				<input type="text" name="name" id="Name" size="20" />
+				
+				<label for="Email">Votre<font color="#FFFFFF">.</font>Email:</label>
+				<input type="text" name="email" id="Email" size="50" />
+				
+				
+                <br>  <label for="type">Objet du message</label><br><br>
+                <div id="type">{{ typeT }}</div><br>
+                <input type="hidden" name="type" value="{{ typeI }}"/>
+
+				<label for="adresse">Votre adresse postale:</label><br><br>
+				<textarea name="adresse" rows="20" cols="20" id="adresse"></textarea><br><br>
+				
+				<label for="proprio">L'adresse de votre propriétaire et son numéro de téléphone:</label><br><br>
+				<textarea name="proprio" rows="20" cols="20" id="proprio"></textarea><br><br>
+				
+				<label for="message">Corp du message (Sans rédiger, le détail du litiges):</label><br><br>
+				<textarea name="message" rows="20" cols="20" id="message" placeholder="Montant(s) demandé(s) et autre(s) détail(s)"></textarea><br><br>
+               <span >Ajoutez votre contrat de bail, votre pièce d'indentité et tout autre éléments que vous jugerez pertinent. (format .page, .doc(x) .pdf):</span><br><br>
+               <div class="file-uploader">
+                </div>
+               <span>En validant le formulaire, vous acceptez les conditions de vente de ce service. <a href="javascript:conditions()">VOIR</a></span>
+               <div id='blocknote' style="display:none;">Ce service consiste en l'envois d'une mise en demeure à votre propriétaire pour tenter de récupérer une somme qui vous ai du. Il s'agit d'une procédure de résolution amiable.<br>Ce service ce rémunère par une commission de 10% prélevée sur les sommes récupérées auprès du propriétaire. Vous serez tenu informé de l'évolution de la procédure par email. A la fin de celle-ci, si le propriétaire a optempéré. Un virement de 90% de la somme récupérée sera réalisé sur votre compte bancaire (Nous vous demanderons un RIB).<br> Si le propriétaire vous transfert directement le montant réclamé, nous nous réservons le droit de vous réclamer le paiement de la commission due (10%).<br> Ce service n'est pas soumi à une obligation de résultat. En aucun cas, nous ne serons tenu responsable d'un refus d'obtempéré. Si les déclarations fournies par vos soins sont erronées, des frais de dossier de 10 euros vous seront facturés (Correspondant à l'envois inutile d'une première lettre + les coûts affectés). Si vos déclarations sont délibérément fausses, vous serez redevable de la somme de 50 euros de frais de réparation du préjudice subit.<br>Vos données personnelles ne serviront qu'à l'usage de ce service. Selon la loi n° 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, vous avez accès aux données vous concerant.</div>
+				<input type="submit" value="Envois" class="submit-button" />
+        </form>
+		<iframe onload="callback_submit(this)" name="myIframe" src="#" style="visibility:hidden;"></iframe>	
+</div>
+<script>(function(handlebars) {
+    compteur = 0;
+	function parse_template(id, context) {
+		 var source = $('#' + id).html();
+  	     return handlebars.compile(source)(context);
+    }
+
+ 	function addFileInput($fileList, allowRemove) {
+        compteur++
+        var context = {
+            field_name: 'fichier[]',
+            field_id: 'fichierId' + compteur,
+            allowRemove: allowRemove
+        };
+        
+        var template = parse_template('file-upload-template', context);
+        $fileList.append(template);
+
+        $('.remove-row-link').click(function(e) {
+            e.preventDefault();
+            $(this).parents('li').remove();
+        });
+    }
+
+
+
+  $.fn.multipleFileUploader = function (settings) {
+    $(this).each(function(index, el) {
+      var defaults = {
+        addButtonCaption: 'Ajouter un autre fichier',
+        initialRequired: true,
+        initialFieldCount: 1,
+        containerClass: 'mfu-file-list-container',
+        addButtonClass: 'mfu-add-new',
+        fileListClass: 'mfu-file-list',
+        $uploaderControl: $(el)
+      };
+      var options = $.extend(defaults, settings);
+
+      options.$uploaderControl.addClass(options.containerClass);
+
+      createAddButton(options);
+      createFileList(options);
+      addInitialFields(options);
+    });
+  };
+
+  function getFileList (options) {
+    return options.$uploaderControl.find('.' + options.fileListClass);
+  }
+  
+  function createFileList (options) {
+		var $fileList = $('<ul />')
+  		.addClass(options.fileListClass);
+    return options.$uploaderControl.prepend($fileList);
+  }
+
+  function createAddButton (options) {
+    var $addButton = $('<div></div><br>')
+      .addClass(options.addButtonClass)
+      .text(options.addButtonCaption);
+
+    options.$uploaderControl.append($addButton);
+
+    return $addButton.click(function() {
+      addFileInput(getFileList(options), true);
+    });
+  }
+
+  function addInitialFields (options) {
+    for (var i = 0; i < options.initialFieldCount; i++) {
+      addFileInput(getFileList(options), options.initialRequired);
+    }
+  }
+  
+  $(document).ready(function(){
+    $('.file-uploader').multipleFileUploader();
+  });
+})(Handlebars);</script>

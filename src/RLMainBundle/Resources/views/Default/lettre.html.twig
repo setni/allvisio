@@ -1,0 +1,144 @@
+
+{% if type == 1 %} 
+{#demande état des lieux de sortie#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : réalisation de l'état des lieux de sortie</b>      
+<br>
+<br><i>Lors de notre dernière entrevue, nous devions procéder à l'état des lieux de sortie. Néanmoins, celui-ci n'a pas été fait.      
+<br>
+<br>L'état des lieux de sortie est obligatoire. Et sans ce document, vous ne pouvez pas m'imputer d'éventuelles dégradations.   
+<br>
+<br>Je vous prie, par retour de ce courrier, de prendre contact avec moi pour fixer un nouveau rendez-vous sous huitaine (donnez ici vos disponibilités). A défaut, je vous prie de procéder au remboursement intégral du dépôt de garantie à la fin de ce mois. (date de remise des clés + 30 jours)</i>      
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+ 
+ 
+{% elseif type == 2 %} 
+{#demande rbst dépôt de garantie sans état des lieux#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Mise en demeure de restitution du dépot de garantie</b>      
+<br>
+<br><i>Lors de notre dernière entrevue, il y a un mois, nous devions procéder à l'état des lieux de sortie. Néanmoins, celui-ci n'a pas été fait.      
+<br>
+<br>L'état des lieux de sortie est obligatoire. Et sans ce document, vous ne pouvez pas m'imputer d'éventuelles dégradations.   
+<br>
+<br>Je vous prie de procéder au remboursement intégral du dépôt de garantie, d'un montant de XX,xx Euros, sous huitaine. A défaut, je demanderais une injonction de paiement au tribunal, assortie d'un taux d'intérêt de 10%.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+<p>Souhaitez-vous que l'on envoie cette lettre pour vous?</p><div class='modele'><button onclick='procedure(true);'>OUI</button><button onclick='procedure(false);'>NON</button></div><br><br>
+ 
+ 
+{% elseif type == 3 %} 
+{#Prélevement sans justificatifs#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Mise en demeure de justifier les prélévements du dépot de garantie</b>      
+<br>
+<br><i>Vous avez réalisés un/des prélevement(s) sur mon dépot de garantie sans apporter les justificatifs obligatoires.      
+<br>
+<br>Les éléments prélévés doivent être justifié sur facture ou devis avec preuve de réalisation.   
+<br>
+<br>Je vous prie de m'envoyer les justificatifs sous huitaine. A défaut, je demanderais au tribunal d'instance le remboursement des sommes prélevées sans justifications.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+<p>Souhaitez-vous que l'on envoie cette lettre pour vous?</p><div class='modele'><button onclick='procedure(true);'>OUI</button><button onclick='procedure(false);'>NON</button></div><br><br>
+ 
+{% elseif type == 4 %} 
+{#Justificatifs de charges#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Régularisation des charges locatives</b>      
+<br>
+<br><i>A ce jour, je n'ai toujours pas eu accès au justificatif des charges locatives prélevées du 1er Janvier AAAA au 31 décembre AAAA.      
+<br>
+<br>Pour justifier de la validité de ces charges, vous avez l'obligation d'établir un état justifié avant le 30 septembre de l'année AAAA+1. Les charges prélevés sans justificatifs ou interdites par disposition légale doivent être remboursées.  
+<br>
+<br>Je vous prie de m'envoyer ces justificatifs sous 30 jours. A défaut, je demanderais au tribunal d'instance le remboursement des sommes prélevées sans justifications.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+
+
+}
+{% elseif type == 5 %} 
+{#Rbst charge#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Mise en demeure de remboursement du trop-perçu des charges locatives</b>      
+<br>
+<br><i>L'état des charges locatives fait apparaitre un solde en ma faveur de XXX,xx Euros. (La somme des charges non-justifiées est de XXX,xx Euros.)     
+<br>
+<br>Le propriétaire doit procéder au remboursement du trop-perçu de charge.  
+<br>
+<br>Je vous prie donc de m'adresser, sous huitaine un reglement de la somme de XXX,xx Euros. A défaut, je demanderais une injonction de paiement au tribunal d'instance.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+<p>Souhaitez-vous que l'on envoie cette lettre pour vous?</p><div class='modele'><button onclick='procedure(true);'>OUI</button><button onclick='procedure(false);'>NON</button></div><br><br>
+
+}
+{% elseif type == 6 %} 
+{#Etat des lieux d'entrée#}
+
+ <div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Mise en demeure de réaliser un état des lieux d'entrée</b>      
+<br>
+<br><i>Lors de ma prise de possession du logement (adresse). Nous n'avons pas réalisé d'état des lieux d'entrée. Celui-ci est obligatoire.  
+<br> 
+<br>
+<br>Je vous prie de prendre contact avec moi sous huitaine afin de fixer un rendez-vous pour la réalisation de l'état des lieux d'entrée.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.
+
+}
+{% elseif type == 7 %} 
+{#Loyer plafonné#}
+
+<div style="float:right;">Nom Prénom propriétaire     
+<br>N° Rue     
+<br>CP Ville</div><b>Votre Nom et Prénom    
+<br>N° Rue      
+<br>CP Ville</b>     
+<br>
+<br><b>Objet : Mise en demeure de régulariser le montant du loyer</b>      
+<br>
+<br><i>Je constate que le logement que j'occupe (adresse) à Paris, ne respecte pas la reglementation de plafonnement des loyers. Mon bail ayant été signé/renouvellé après le 1 juillet 2015.
+<br> 
+<br>
+<br>Le loyer que vous me demander et de XXX,XX Euros par mois alors qu'il devrait être plafonné à XXX,XX Euros maximum.
+<br>Je vous prie de bien vouloir, par retour de courrier, prendre en compte la modification. Lors de la prochaine échéance, je procéderais à la régularisation des trop-perçus, soit XXX,XX Euros.</i>  
+<br>
+<br>Dans l'attente de votre réponse, je vous prie d'agréer, Madame/Monsieur mes sentiments distingués.";
+<p>Souhaitez-vous que l'on envoie cette lettre pour vous?</p><div class='modele'><button onclick='procedure(true);'>OUI</button><button onclick='procedure(false);'>NON</button></div><br><br>
+
+{% endif %}
