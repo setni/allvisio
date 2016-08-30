@@ -135,7 +135,7 @@ class DefaultController extends Controller
         if (!$find) {
             $sql = new Connection;
             $sql->setIp($ip)->setUserAgent($ua)->setNb(1);
-            $em->persist($sql1);
+            $em->persist($sql);
         } else {
             $nb = $find->getNb();
             $find->setNb($nb+1);
